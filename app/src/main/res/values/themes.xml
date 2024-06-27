@@ -1,0 +1,19 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Spoonacular" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Spoonacular" parent="Base.Theme.Spoonacular" />
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="bottomNavigationStyle">@style/Widget.BottomNavigationView.Custom</item>
+    </style>
+
+    <style name="Widget.BottomNavigationView.Custom" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">#F44336</item>
+    </style>
+
+</resources>

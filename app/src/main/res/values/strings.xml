@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Spoonacular</string>
+    <string name="welcome_to_reciipiie">Welcome to Recipe</string>
+    <string name="please_signing_to_continue">Please sign in to continue</string>
+    <string name="continue_with_google">Continue with google</string>
+    <string name="default_web_client_id">262001097065-k4agrtub3tasl33snkog481vdeifn0b1.apps.googleusercontent.com</string>
+    <string name="recipename">recipeName</string>
+    <string name="recipe_name_goes_here">Recipe name goes here</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="favourite_recipes">Favourite recipes</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/9214589741</string>
+    <string name="title">Title</string>
+</resources>

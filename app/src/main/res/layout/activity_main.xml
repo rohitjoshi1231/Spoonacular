@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img"
+    android:orientation="vertical"
+    tools:context=".ui.activities.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/title_2"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/inter"
+        android:text="@string/welcome_to_reciipiie"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/title_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/google_login"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/inter"
+        android:text="@string/please_signing_to_continue"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/google_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_button_bg"
+        android:drawableStart="@drawable/img_1"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/inter"
+        android:paddingStart="70dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/continue_with_google"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</RelativeLayout>

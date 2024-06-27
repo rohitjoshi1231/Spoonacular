@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/secondary_color"
+    tools:context=".ui.fragments.HomeFragment">
+
+    <TextView
+        android:id="@+id/greetings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/inter"
+        android:textAlignment="textStart"
+        android:textColor="#171B21"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/discover"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/greetings"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/inter"
+        android:text="Discover tasty and healthy receipt"
+        android:textAlignment="textStart"
+        android:textColor="#6C6C89"
+        android:textSize="12sp" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/discover"
+        android:layout_margin="10dp"
+        android:background="#F2F7FD"
+        android:focusable="false"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search any recipe" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/searchView"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/titleHeading1"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_below="@id/searchView"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/inter"
+        android:text="Popular Recipes"
+        android:textAlignment="textStart"
+        android:textColor="#171B21"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popularRecipeRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleHeading1"
+        android:layout_margin="10dp"
+        android:orientation="horizontal" />
+
+
+    <TextView
+        android:id="@+id/titleHeading2"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_below="@id/popularRecipeRecycler"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/inter"
+        android:text="All recipes"
+        android:textAlignment="textStart"
+        android:textColor="#171B21"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/allRecipeRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleHeading2"
+        android:layout_margin="10dp" />
+
+    <ProgressBar
+        android:id="@+id/home_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+</RelativeLayout>
