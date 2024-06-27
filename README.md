@@ -1,49 +1,65 @@
-# Spoonacular - Android App for Recipes
-
- Spoonacularis an Android application designed to help users discover, save, and explore various recipes using the Spoonacular API. This document provides an overview of the app's features, setup instructions, and other relevant details.
-
-## Features
-
-- **Browse Recipes**: Fetch and display a list of popular recipes and search for specific recipes using the Spoonacular API.
-- **Recipe Details**: View detailed information about each recipe including ingredients, instructions, nutrients, and similar recipes.
-- **Favorite Recipes**: Mark recipes as favorites to easily access them later.
-- **Offline Capability**: Favorite recipes are cached locally for offline access.
-- **Navigation Stack**: Navigate through recipe details with a bottom-to-top animation and swipe gesture for easy back navigation.
-- **Ad Integration**: Display advertisements in between every five recipes in the list.
-- **Networking Module**: Utilize a separate module for networking, leveraging both XML and Compose for UI development.
-
-## API Documentation
-
-For detailed API documentation, refer to [Spoonacular API Docs](https://spoonacular.com/food-api/docs).
-
-## Figma Design
-
-Explore the app design in [Figma](https://www.figma.com/file/3osDPZ0cy0AMfynjkRFOoV/MathOnGo---Android---Assignment?type=design&node-id=0-1&mode=design).
-
-## Getting Started
-
-To run the app locally, follow these steps:
-
-1. **Clone the Repository**: `git clone https://github.com/your/repository.git`
-   
-2. **Set up API Key**: Obtain an API key from Spoonacular and add it to your project. Instructions available in the [Spoonacular API Console](https://spoonacular.com/food-api/console#Profile).
-
-3. **Configure Project**: Open the project in Android Studio. Ensure all dependencies are resolved.
-
-4. **Build and Run**: Connect an Android device or emulator and run the app.
-
-## Contributing
-
-If you'd like to contribute to MathOnGo, feel free to fork the repository and submit a pull request with your changes. Contributions are welcomed in the form of bug fixes, feature enhancements, or documentation improvements.
-    
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contact
-
-For questions or feedback, please contact Rohit Joshi(mailto:your.email@example.com).
+Sure, here's a professional README template for your Android recipe app:
 
 ---
 
-Feel free to customize the sections and details based on your specific project needs and preferences.
+# Recipe App
+
+Welcome to Recipe App, your go-to source for exploring and managing delicious recipes!
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Architecture](#architecture)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+Recipe App is an Android application designed to help users discover, save, and explore a wide variety of recipes. Powered by the Spoonacular API, it offers a rich culinary experience right at your fingertips. Whether you're a cooking enthusiast or just looking to try something new, Recipe App makes it easy to find and manage your favorite recipes.
+
+## Architecture
+
+Recipe App follows the MVVM (Model-View-ViewModel) architectural pattern, which provides a clear separation of concerns and facilitates a more modular, testable, and maintainable codebase.
+
+## Features
+
+- **Browse Recipes**: Explore a vast collection of recipes, including popular dishes and specific search queries.
+- **Recipe Details**: Access detailed information for each recipe, such as ingredients, instructions, nutritional facts, and related recipes.
+- **Favorite Recipes**: Save your favorite recipes to easily access them later, even when offline.
+- **Offline Capability**: Enjoy seamless access to your favorite recipes without needing an internet connection.
+- **Smooth Navigation**: Navigate through recipes with intuitive swipe gestures and a bottom-to-top animation for effortless browsing.
+- **Ad Integration**: Display advertisements strategically within the app to support ongoing development.
+- **Networking Module**: Utilize a robust networking module for efficient data retrieval, supporting both XML and Jetpack Compose for modern UI development.
+
+## Installation
+
+To use Recipe App, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/your-username/recipe-app.git`
+2. Open the project in Android Studio.
+3. Build and run the app on your Android device or emulator.
+
+## Usage
+
+1. **Browse Recipes**: Start by browsing through the list of available recipes.
+2. **View Details**: Tap on a recipe to view detailed information including ingredients and cooking instructions.
+3. **Favorite Recipes**: Mark recipes as favorites by tapping the star icon, enabling quick access later.
+4. **Offline Access**: Enjoy offline access to your favorite recipes, ensuring you can cook anytime, anywhere.
+5. **Navigation**: Use swipe gestures or the bottom navigation bar to navigate effortlessly through recipe details.
+
+## Contributing
+
+Contributions are welcome! Here's how you can contribute:
+
+- Fork the repository.
+- Create a new branch (`git checkout -b feature/your-feature`).
+- Commit your changes (`git commit -am 'Add some feature'`).
+- Push to the branch (`git push origin feature/your-feature`).
+- Create a new Pull Request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
