@@ -17,11 +17,14 @@ import com.example.spoonacular.databinding.BottomSheetSortBinding
 import com.example.spoonacular.repository.SpoonacularRepository
 import com.example.spoonacular.ui.activities.HomeScreenActivity
 import com.example.spoonacular.ui.activities.IngredientsAdapter
+import com.example.spoonacular.ui.activities.MainActivity
 import com.example.spoonacular.ui.activities.MainActivity.Companion.API_KEY
 import com.example.spoonacular.ui.adapter.NutrientAdapter
 import com.example.spoonacular.viewmodel.RecipeViewModel
 import com.example.spoonacular.viewmodel.RecipeViewModelFactory
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -47,6 +50,7 @@ class SortBottomSheetFragment : BottomSheetDialogFragment() {
         }
     }
 
+    val auth = FirebaseAuth.getInstance().currentUser
     private lateinit var binding: BottomSheetSortBinding
 
     override fun onCreateView(
@@ -56,23 +60,31 @@ class SortBottomSheetFragment : BottomSheetDialogFragment() {
 
         setupViewModel()
         getSearchedRecipes(query)
+        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
 
-        binding.bottomSheetFavIcon.setOnClickListener {
-            recipeViewModel.recipeInfo.observe(this) {
-                binding.progressBar.visibility = View.VISIBLE
-                db.collection("Recipes").add(it).addOnCompleteListener { success ->
-                    if (success.isSuccessful) {
-                        binding.progressBar.visibility = View.GONE
-                        Toast.makeText(requireContext(), "Added To fav", Toast.LENGTH_SHORT).show()
-                    } else {
-                        binding.progressBar.visibility = View.GONE
-                        Toast.makeText(
-                            requireContext(), "Adding To fav is failed", Toast.LENGTH_SHORT
-                        ).show()
+        if (account != null && !auth?.uid.isNullOrEmpty()) {
+            binding.bottomSheetFavIcon.setOnClickListener {
+                recipeViewModel.recipeInfo.observe(this) {
+                    binding.progressBar.visibility = View.VISIBLE
+                    db.collection("Recipes").add(it).addOnCompleteListener { success ->
+                        if (success.isSuccessful) {
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(requireContext(), "Added To fav", Toast.LENGTH_SHORT)
+                                .show()
+                        } else {
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(
+                                requireContext(), "Adding To fav is failed", Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             }
+        } else {
+            Toast.makeText(requireContext(), "Sign in To add Favourites", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(requireContext(), MainActivity::class.java))
         }
+
 
         return binding.root
     }

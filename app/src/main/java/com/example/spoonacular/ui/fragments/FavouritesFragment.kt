@@ -1,19 +1,23 @@
 package com.example.spoonacular.ui.fragments
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spoonacular.databinding.FragmentFavouritesBinding
 import com.example.spoonacular.model.RecipeDetails
+import com.example.spoonacular.ui.activities.MainActivity
 import com.example.spoonacular.ui.activities.MainActivity.Companion.TAG
 import com.example.spoonacular.ui.adapter.FavouriteAdapter
 import com.example.spoonacular.viewmodel.FavouritesViewModel
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
@@ -26,19 +30,26 @@ class FavouritesFragment : Fragment() {
     private lateinit var favouriteAdapter: FavouriteAdapter
     private val auth = FirebaseAuth.getInstance().currentUser
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentFavouritesBinding.inflate(inflater, container, false)
         favouriteAdapter = FavouriteAdapter(requireContext(), recipeList)
         setupRecyclerViews()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         favouritesViewModel = ViewModelProvider(this)[FavouritesViewModel::class.java]
-        fetchRecipes()
+        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
+
+        if (account != null && !auth?.uid.isNullOrEmpty()) {
+            fetchRecipes()
+        } else {
+            Toast.makeText(requireContext(), "Sign in To add Favourites", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+        }
     }
 
     private fun setupRecyclerViews() {
@@ -59,8 +70,7 @@ class FavouritesFragment : Fragment() {
                     recipeList.addAll(recipes)
                     favouriteAdapter.notifyDataSetChanged()
                     binding.homeProgress.visibility = View.GONE
-                }
-                .addOnFailureListener { e ->
+                }.addOnFailureListener { e ->
                     Log.e(TAG, "Error fetching recipes: ", e)
                 }
         } catch (e: Exception) {

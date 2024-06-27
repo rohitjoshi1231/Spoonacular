@@ -23,13 +23,25 @@
         android:id="@+id/title_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/google_login"
+        android:layout_above="@+id/skip"
         android:layout_margin="10dp"
         android:fontFamily="@font/inter"
         android:text="@string/please_signing_to_continue"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/google_login"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/inter"
+        android:text="Skip Sign in"
+        android:textColor="#E54900"
+        android:textSize="14sp"
+        android:textStyle="italic|bold" />
 
     <Button
         android:id="@+id/google_login"

@@ -24,6 +24,8 @@ import com.example.spoonacular.ui.adapter.NutrientAdapter
 import com.example.spoonacular.viewmodel.FavouritesViewModel
 import com.example.spoonacular.viewmodel.RecipeViewModel
 import com.example.spoonacular.viewmodel.RecipeViewModelFactory
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
@@ -38,6 +40,9 @@ class InformationActivity : AppCompatActivity() {
     private val db = Firebase.firestore
     private var toggle = false
     private val nutritionList = mutableListOf<Nutrient>()
+    private val auth = FirebaseAuth.getInstance().currentUser
+    val times = 1
+    private var current = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,8 +50,12 @@ class InformationActivity : AppCompatActivity() {
         binding = ActivityInformationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupViewModel()
-
+        val account = GoogleSignIn.getLastSignedInAccount(this@InformationActivity)
         favouritesViewModel = ViewModelProvider(this)[FavouritesViewModel::class.java]
+
+        if (account == null && auth?.uid.isNullOrEmpty()) {
+            binding.fav.isEnabled = false
+        }
 
         binding.arrowImageView.setOnClickListener {
             toggle = !toggle

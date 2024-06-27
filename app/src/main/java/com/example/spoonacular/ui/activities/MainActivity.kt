@@ -55,9 +55,15 @@ class MainActivity : AppCompatActivity() {
             binding.googleLogin.setOnClickListener {
                 googleSignIn()
             }
-
         }
 
+        binding.skip.setOnClickListener {
+            if (account == null && auth.currentUser?.uid == null) {
+                navigateToHomeScreen()
+            } else {
+                navigateToHomeScreen()
+            }
+        }
 
         recipeViewModel.similarRecipe.observe(this) {
             Log.d(TAG, "onCreate: $it")
@@ -99,7 +105,6 @@ class MainActivity : AppCompatActivity() {
 
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI accordingly
-                println("Api Exception Welcome Activity: $e")
                 Toast.makeText(this, "Error: $e", Toast.LENGTH_SHORT)
                     .show()
             }
